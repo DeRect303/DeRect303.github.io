@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>readelf简介 | 一往情深深几许？深山夕照深秋雨</title><meta name="author" content="DeRect"><meta name="copyright" content="DeRect"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="readelf 工具确实可以看地址，特别是与ELF（Executable and Linkable Format）文件中各种节（sections）、段（segments）以及符号（symbols）相关的地址信息。 readelf 的作用： readelf 是一个用于显示 ELF 格式文件的信息的命令行工具，它是 GNU Binutils 工具集的一部分。ELF 是一种常用的可执行文件、目标代码、共">
+<meta property="og:type" content="article">
+<meta property="og:title" content="readelf简介">
+<meta property="og:url" content="http://example.com/undefined/11966.html">
+<meta property="og:site_name" content="一往情深深几许？深山夕照深秋雨">
+<meta property="og:description" content="readelf 工具确实可以看地址，特别是与ELF（Executable and Linkable Format）文件中各种节（sections）、段（segments）以及符号（symbols）相关的地址信息。 readelf 的作用： readelf 是一个用于显示 ELF 格式文件的信息的命令行工具，它是 GNU Binutils 工具集的一部分。ELF 是一种常用的可执行文件、目标代码、共">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/DeRect.png">
+<meta property="article:published_time" content="2025-07-31T05:51:41.345Z">
+<meta property="article:modified_time" content="2025-07-31T05:58:26.502Z">
+<meta property="article:author" content="DeRect">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/DeRect.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "readelf简介",
+  "url": "http://example.com/undefined/11966.html",
+  "image": "http://example.com/img/DeRect.png",
+  "datePublished": "2025-07-31T05:51:41.345Z",
+  "dateModified": "2025-07-31T05:58:26.502Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DeRect",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/undefined/11966.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'readelf简介',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/glass.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/photo.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">一往情深深几许？深山夕照深秋雨</span></a><a class="nav-page-title" href="/"><span class="site-name">readelf简介</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">readelf简介</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-07-31T05:51:41.345Z" title="Created 2025-07-31 13:51:41">2025-07-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-07-31T05:58:26.502Z" title="Updated 2025-07-31 13:58:26">2025-07-31</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><code>readelf</code> 工具<strong>确实可以看地址</strong>，特别是与ELF（Executable and Linkable Format）文件中各种节（sections）、段（segments）以及符号（symbols）相关的地址信息。</p>
+<p><strong><code>readelf</code> 的作用：</strong></p>
+<p><code>readelf</code> 是一个用于显示 ELF 格式文件的信息的命令行工具，它是 GNU Binutils 工具集的一部分。ELF 是一种常用的可执行文件、目标代码、共享库（如 <code>.so</code> 文件）和核心转储文件的格式，广泛用于 Linux、Android 等操作系统。</p>
+<p><strong><code>readelf</code> 可以看出哪些地址信息？</strong></p>
+<ol>
+<li><strong>节（Sections）的地址：</strong><ul>
+<li>节的虚拟地址（Virtual Address, VA）：加载到内存中的起始地址。</li>
+<li>节的文件偏移（File Offset）：在文件中的位置。</li>
+<li><code>.text</code>（代码段）、<code>.data</code>（已初始化数据段）、<code>.rodata</code>（只读数据段）、<code>.bss</code>（未初始化数据段）等都是常见的节。</li>
+</ul>
+</li>
+<li><strong>段（Segments）的地址：</strong><ul>
+<li>程序头（Program Header）中定义的各个段的虚拟地址和文件偏移。段是运行时加载器关注的更高级别的结构，通常一个段会包含一个或多个节。</li>
+</ul>
+</li>
+<li><strong>符号（Symbols）的地址：</strong><ul>
+<li>函数、全局变量等符号的地址（Value 字段）。</li>
+</ul>
+</li>
+<li><strong>重定位（Relocations）的地址：</strong><ul>
+<li>需要在加载时进行地址修正的位置。</li>
+</ul>
+</li>
+<li><strong>动态链接信息（Dynamic Linking Information）的地址：</strong><ul>
+<li>动态符号表、依赖库等地址。</li>
+</ul>
+</li>
+</ol>
+<p><strong>如何使用 <code>readelf</code> 查看地址信息？</strong></p>
+<p>您可以使用不同的选项来查看特定类型的地址信息。</p>
+<p><strong>1. 查看节头（Section Headers）信息：</strong></p>
+<p>这个命令会列出文件中所有节的名称、类型、地址、偏移、大小等详细信息。</p>
+<p>Bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -S &lt;your_file.so&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>输出示例中的关键列：</strong><ul>
+<li><code>Addr</code> (Address)：节的虚拟内存地址。</li>
+<li><code>Off</code> (Offset)：节在文件中的偏移量。</li>
+<li><code>Size</code>：节的大小。</li>
+<li><code>Name</code>：节的名称。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 查看程序头（Program Headers &#x2F; Segments）信息：</strong></p>
+<p>这个命令会显示 ELF 文件的程序头表，它定义了如何将文件映射到内存中。</p>
+<p>Bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -l &lt;your_file.so&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>输出示例中的关键列：</strong><ul>
+<li><code>Offset</code>：段在文件中的偏移量。</li>
+<li><code>VirtAddr</code> (Virtual Address)：段在内存中的起始虚拟地址。</li>
+<li><code>PhysAddr</code> (Physical Address)：段在物理内存中的起始地址（通常与 VirtAddr 相同，除非是特殊情况）。</li>
+<li><code>MemSiz</code> (Memory Size)：段在内存中占据的大小。</li>
+<li><code>FileSiz</code> (File Size)：段在文件中占据的大小。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 查看符号表（Symbol Table）信息：</strong></p>
+<p>这个命令会列出文件中的符号（函数、变量等）及其地址、大小、类型等。</p>
+<p>Bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -s &lt;your_file.so&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>输出示例中的关键列：</strong><ul>
+<li><code>Value</code>：符号的地址。对于函数，这是其入口点的地址；对于变量，这是其存储位置的地址。</li>
+<li><code>Size</code>：符号的大小（例如，函数代码的大小）。</li>
+<li><code>Name</code>：符号的名称。</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. 查看所有信息 (通常用于全面分析)：</strong></p>
+<p>Bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -a &lt;your_file.so&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会输出 <code>readelf</code> 能获取到的所有 ELF 相关信息，包括节、段、符号、重定位、动态链接信息等等。输出会非常冗长。</p>
+<p><strong>示例（以您之前的 <code>libapp.so</code> 输出为例）：</strong></p>
+<p>您之前提供的命令和输出是：</p>
+<p>Bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">readelf -s D:\biancheng303\practice\Nep\flutterpro\flutterPro\lib\arm64-v8a\libapp.so</span><br><span class="line"></span><br><span class="line">Symbol table &#x27;&#x27; contains 6 entries:</span><br><span class="line">   Num:     Value              Size Type        Bind    Vis        Ndx Name</span><br><span class="line">      0: 0000000000000000         0 NOTYPE    LOCAL   DEFAULT  UND</span><br><span class="line">      1: 00000000000e0000     92288 OBJECT    GLOBAL  DEFAULT    7 _kDartVmSnapshot[...]</span><br><span class="line">      2: 00000000000f6880    0x23d910 OBJECT    GLOBAL  DEFAULT    7 _kDartIsolateSna[...]</span><br><span class="line">      3: 0000000000000340     16240 OBJECT    GLOBAL  DEFAULT    5 _kDartVmSnapshotData</span><br><span class="line">      4: 00000000000042c0    0xd1f10 OBJECT    GLOBAL  DEFAULT    5 _kDartIsolateSna[...]</span><br><span class="line">      5: 00000000000001c8        32 OBJECT    GLOBAL  DEFAULT    1 _kDartSnapshotBuildId</span><br></pre></td></tr></table></figure>
+
+<p>在这个输出中：</p>
+<ul>
+<li><code>Value</code> 列就是符号的地址。<ul>
+<li>例如，<code>_kDartVmSnapshot[...]</code> 的地址是 <code>0x000e0000</code>。</li>
+<li><code>_kDartIsolateSna[...]</code> 的地址是 <code>0x000f6880</code>。</li>
+</ul>
+</li>
+</ul>
+<p>所以，是的，<code>readelf</code> 可以非常有效地查看 ELF 文件的地址信息。它是逆向工程中分析二进制文件结构和定位关键数据&#x2F;代码区域的重要工具。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DeRect</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/undefined/11966.html">http://example.com/undefined/11966.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/DeRect.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/undefined/62593.html" title="aiCTF概念普及"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">aiCTF概念普及</div></div><div class="info-2"><div class="info-item-1">AI相关的CTF（Capture The Flag）题目正在变得越来越常见，它们通常围绕着机器学习模型安全和人工智能的漏洞展开。这些题目旨在测试参赛者对AI系统弱点的理解和利用能力。 以下是AI CTF中常见的考法和题型：  1. 对抗性攻击 (Adversarial Attacks)这是AI CTF中最常见且最核心的考法之一。目标通常是让一个训练好的模型做出错误的预测，而对人类来说，输入的变化是难以察觉的。  考法： 生成对抗样本 (Adversarial Examples Generation): 给你一个预训练的模型（通常是图像分类模型）和一张图片，要求你对图片进行微小改动（通常肉眼无法识别），使其被模型误分类为某个特定的目标类别，或者仅仅是错误分类即可。 黑盒攻击 (Black-box Attacks): 你无法访问模型的内部结构（如权重、梯度），只能通过查询模型（输入数据，获取预测结果）来生成对抗样本。这可能涉及到迁移攻击、基于分数的攻击或基于查询的攻击。 白盒攻击 (White-box Attacks):...</div></div></div></a><a class="pagination-related" href="/undefined/6776.html" title="retdec反编译字节码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">retdec反编译字节码</div></div><div class="info-2"><div class="info-item-1">当您使用 IDA 将某个函数的机器码（字节码）dump 出来后，要使用 RetDec 对其进行反编译，需要注意的是，RetDec 需要知道这些字节码的上下文信息，因为它们不再是一个完整的可执行文件。 核心思想是使用 retdec-decompiler 命令的 raw 模式，并手动指定架构、入口点等关键信息。 以下是详细步骤和示例： 1. 准备工作 获取 dump 出来的字节码文件： 假设您已将函数的字节码保存到一个文件中，例如 my_function_dump.bin。 获取原始信息： 在 IDA 中，记下以下关键信息： 函数的起始地址： 这是最重要的信息，RetDec 需要从这个地址开始反编译。例如 0x140001234。 目标架构： 原始二进制文件是 32 位还是 64 位？是 Intel x86、x64、ARM 还是其他？例如 x86-64。 字节序 (Endianness)： 大多数 x86&#x2F;x64 系统都是小端序 (little-endian)。如果您的目标是其他架构，请确认。    2. 使用 RetDec 命令反编译打开命令提示符 (CMD) 或...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/DeRect.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DeRect</div><div class="author-info-description">This is a simple begin</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/29520.html" title="协议运行概念一览">协议运行概念一览</a><time datetime="2025-07-31T05:51:41.370Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/50101.html" title="常见语言比对">常见语言比对</a><time datetime="2025-07-31T05:51:41.365Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/36200.html" title="windows代理查看">windows代理查看</a><time datetime="2025-07-31T05:51:41.359Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/6776.html" title="retdec反编译字节码">retdec反编译字节码</a><time datetime="2025-07-31T05:51:41.350Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/11966.html" title="readelf简介">readelf简介</a><time datetime="2025-07-31T05:51:41.345Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By DeRect</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
