@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>WinMain简单介绍 | 一往情深深几许？深山夕照深秋雨</title><meta name="author" content="DeRect"><meta name="copyright" content="DeRect"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="WinMain 函数的典型签名如下： C++ 123456int WINAPI WinMain(    _In_ HINSTANCE hInstance,    _In_opt_ HINSTANCE hPrevInstance,    _In_ LPSTR     lpCmdLine,    _In_ int       nCmdShow);  或者其 Unicode 版本 wWinMain： C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WinMain简单介绍">
+<meta property="og:url" content="http://example.com/undefined/25897.html">
+<meta property="og:site_name" content="一往情深深几许？深山夕照深秋雨">
+<meta property="og:description" content="WinMain 函数的典型签名如下： C++ 123456int WINAPI WinMain(    _In_ HINSTANCE hInstance,    _In_opt_ HINSTANCE hPrevInstance,    _In_ LPSTR     lpCmdLine,    _In_ int       nCmdShow);  或者其 Unicode 版本 wWinMain： C">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/DeRect.png">
+<meta property="article:published_time" content="2025-07-31T02:30:00.000Z">
+<meta property="article:modified_time" content="2025-07-31T07:25:42.032Z">
+<meta property="article:author" content="DeRect">
+<meta property="article:tag" content="WinMain">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/DeRect.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WinMain简单介绍",
+  "url": "http://example.com/undefined/25897.html",
+  "image": "http://example.com/img/DeRect.png",
+  "datePublished": "2025-07-31T02:30:00.000Z",
+  "dateModified": "2025-07-31T07:25:42.032Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DeRect",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/undefined/25897.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WinMain简单介绍',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/glass.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/photo.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">一往情深深几许？深山夕照深秋雨</span></a><a class="nav-page-title" href="/"><span class="site-name">WinMain简单介绍</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">WinMain简单介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-07-31T02:30:00.000Z" title="Created 2025-07-31 10:30:00">2025-07-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-07-31T07:25:42.032Z" title="Updated 2025-07-31 15:25:42">2025-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows/">Windows</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><strong><code>WinMain</code> 函数的典型签名如下：</strong></p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int WINAPI WinMain(</span><br><span class="line">    _In_ HINSTANCE hInstance,</span><br><span class="line">    _In_opt_ HINSTANCE hPrevInstance,</span><br><span class="line">    _In_ LPSTR     lpCmdLine,</span><br><span class="line">    _In_ int       nCmdShow</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>或者其 Unicode 版本 <code>wWinMain</code>：</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int WINAPI wWinMain(</span><br><span class="line">    _In_ HINSTANCE hInstance,</span><br><span class="line">    _In_opt_ HINSTANCE hPrevInstance,</span><br><span class="line">    _In_ LPWSTR    lpCmdLine,</span><br><span class="line">    _In_ int       nCmdShow</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>现在，让我们对照您提供的参数 <code>(0, 0, 7B8326, 0)</code> 来分析：</p>
+<ol>
+<li><strong><code>hInstance</code> (第一个参数): <code>0</code></strong><ul>
+<li><code>hInstance</code> 是当前应用程序实例的句柄（handle to an instance），由操作系统提供。这是一个非常重要的参数，用于加载资源（如图标、位图、字符串）、创建窗口类等。</li>
+<li><strong>通常情况下，<code>hInstance</code> 不会是 <code>0</code>。</strong> 如果它是 <code>0</code>，那么在 <code>WinMain</code> 内部尝试使用 <code>hInstance</code> 来进行任何需要实例句柄的操作（这是 Windows GUI 应用程序的常见操作）都将失败。</li>
+<li>除非这是一个非常特殊的环境，其中 <code>WinMain</code> 是被以非标准方式调用（例如，在一个极简的 stub 或 loader 中，它可能不关心或不依赖 <code>hInstance</code>），否则 <code>0</code> 是不正确的。</li>
+</ul>
+</li>
+<li><strong><code>hPrevInstance</code> (第二个参数): <code>0</code></strong><ul>
+<li><code>hPrevInstance</code> 是指向应用程序上一个实例的句柄。这个参数在 16 位 Windows 中有意义，用于识别是否已经有相同程序的实例在运行。</li>
+<li><strong>在 32 位和 64 位 Windows 中，这个参数总是 <code>NULL</code> (即 <code>0</code>)。</strong></li>
+<li><strong>所以，这个 <code>0</code> 是正确的。</strong></li>
+</ul>
+</li>
+<li><strong><code>lpCmdLine</code> (第三个参数): <code>7B8326</code></strong><ul>
+<li><code>lpCmdLine</code> 是一个指向命令行字符串的指针，该字符串包含了启动应用程序时传入的所有命令行参数（不包括程序本身的名称）。对于 <code>WinMain</code> 它是 <code>LPSTR</code> (ANSI 字符串)，对于 <code>wWinMain</code> 它是 <code>LPWSTR</code> (Unicode 字符串)。</li>
+<li><code>7B8326</code> 看起来像一个内存地址（可能是十六进制的 <code>0x7B8326</code>）。</li>
+<li><strong>这个参数作为内存地址本身是合理的。</strong> 它表示命令行字符串存储在内存中的位置。程序会从这个地址读取命令行参数。</li>
+<li><strong>是否“正确”取决于这个地址 <code>0x7B8326</code> 处是否真的存在一个有效的、以 null 结尾的命令行字符串。</strong> 如果这个地址是无效的，或者指向的数据不是一个合法的字符串，那么程序在尝试解析命令行时就会崩溃。</li>
+</ul>
+</li>
+<li><strong><code>nCmdShow</code> (第四个参数): <code>0</code></strong><ul>
+<li><code>nCmdShow</code> 是一个整数标志，指示如何显示主应用程序窗口（例如，正常显示、最小化、最大化等）。常用的值有 <code>SW_SHOWNORMAL</code> (1), <code>SW_SHOWMAXIMIZED</code> (3), <code>SW_SHOWMINIMIZED</code> (2), <code>SW_HIDE</code> (0) 等。</li>
+<li><strong><code>0</code> 对应 <code>SW_HIDE</code>，这意味着应用程序的主窗口在启动时应该被隐藏。</strong></li>
+<li><strong>这个值本身是有效的</strong>，它指示了窗口的初始显示状态。程序开发者可以选择让窗口默认隐藏。</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DeRect</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/undefined/25897.html">http://example.com/undefined/25897.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WinMain/">WinMain</a></div><div class="post-share"><div class="social-share" data-image="/img/DeRect.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/undefined/58600.html" title="ANSI简单介绍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">ANSI简单介绍</div></div><div class="info-2"><div class="info-item-1">ANSI 字符串通常指的是在 非 Unicode 编码环境下使用的字符串。它是一个比较宽泛的术语，特指那些依赖于特定代码页 (Code Page) 来解释字节序列的字符串。 什么是 ANSI 字符串？在计算机早期，尤其是在 Windows 操作系统中，“ANSI”这个词被用来指代那些使用系统默认非 Unicode 代码页的字符串。例如：  英文环境：通常是 Latin-1 (ISO-8859-1) 或 Windows-1252 (Western European)。 中文（简体）环境：通常是 GB2312 或 GBK (Windows-936)。 日文环境：通常是 Shift-JIS (Windows-932)。 其他语言：根据操作系统的区域设置，会对应不同的代码页。  核心思想是： 相同的字节序列，在不同的 ANSI 代码页下，可能被解释为完全不同的字符。 ANSI 字符串的特点 代码页依赖性：它是非 Unicode 编码的字符串。字符的实际含义取决于当前系统或应用程序所使用的默认代码页。 单字节或多字节字符：在某些代码页中，如...</div></div></div></a><a class="pagination-related" href="/undefined/62080.html" title="Windows加载链接库讲解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Windows加载链接库讲解</div></div><div class="info-2"><div class="info-item-1">这段 C++ 伪代码是 sub_401560 函数的实现，它展示了程序如何动态加载一个库（DLL&#x2F;共享库），并从中解析（获取函数指针）两个特定的函数：aesEncrypt 和 sign。 函数功能概述： 这个函数的主要目的是尝试加载一个由 a1 参数指定的库文件（DLL），然后从该库中获取 aesEncrypt 和 sign 这两个函数的地址。根据操作结果，它会返回一个状态码。 详细分析： C++ 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980__int64 __fastcall sub_401560(const QString *a1) // 函数 sub_401560，接受一个指向 QString 的常量指针 a1，返回 __int64&#123;  unsigned int v1; // ebx - 用于存储...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/DeRect.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DeRect</div><div class="author-info-description">This is a simple begin</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/29520.html" title="协议运行概念一览">协议运行概念一览</a><time datetime="2025-07-31T05:51:41.370Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/50101.html" title="常见语言比对">常见语言比对</a><time datetime="2025-07-31T05:51:41.365Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/36200.html" title="windows代理查看">windows代理查看</a><time datetime="2025-07-31T05:51:41.359Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/6776.html" title="retdec反编译字节码">retdec反编译字节码</a><time datetime="2025-07-31T05:51:41.350Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/11966.html" title="readelf简介">readelf简介</a><time datetime="2025-07-31T05:51:41.345Z" title="Created 2025-07-31 13:51:41">2025-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By DeRect</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
