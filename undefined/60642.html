@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>IDApy提取数据 | 一往情深深几许？深山夕照深秋雨</title><meta name="author" content="DeRect"><meta name="copyright" content="DeRect"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[WUSTCTF 2020]Cr0ssfun   主函数部分显示了主要逻辑以及比较函数所在  比较函数写得很清晰了，就是单纯的逐字比对，这边采用idapy练习一下脚本能力 EXP： import idaapi import idautils import idc import ida_dbg import ida_funcs start&#x3D;0x00001155 end&#x3D;0x00">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDApy提取数据">
+<meta property="og:url" content="http://example.com/undefined/60642.html">
+<meta property="og:site_name" content="一往情深深几许？深山夕照深秋雨">
+<meta property="og:description" content="[WUSTCTF 2020]Cr0ssfun   主函数部分显示了主要逻辑以及比较函数所在  比较函数写得很清晰了，就是单纯的逐字比对，这边采用idapy练习一下脚本能力 EXP： import idaapi import idautils import idc import ida_dbg import ida_funcs start&#x3D;0x00001155 end&#x3D;0x00">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/DeRect.png">
+<meta property="article:published_time" content="2025-08-02T08:41:00.000Z">
+<meta property="article:modified_time" content="2025-08-02T09:12:29.493Z">
+<meta property="article:author" content="DeRect">
+<meta property="article:tag" content="idapy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/DeRect.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "IDApy提取数据",
+  "url": "http://example.com/undefined/60642.html",
+  "image": "http://example.com/img/DeRect.png",
+  "datePublished": "2025-08-02T08:41:00.000Z",
+  "dateModified": "2025-08-02T09:12:29.493Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DeRect",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/undefined/60642.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'IDApy提取数据',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/glass.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/photo.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">一往情深深几许？深山夕照深秋雨</span></a><a class="nav-page-title" href="/"><span class="site-name">IDApy提取数据</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">IDApy提取数据</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-08-02T08:41:00.000Z" title="Created 2025-08-02 16:41:00">2025-08-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-08-02T09:12:29.493Z" title="Updated 2025-08-02 17:12:29">2025-08-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">每日一题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p> [WUSTCTF 2020]Cr0ssfun </p>
+<p><img src="https://derect.oss-cn-hangzhou.aliyuncs.com/C:%5CUsers%5C32427%5CPictures%5Cimg_bed20250802164558375.png"></p>
+<p>主函数部分显示了主要逻辑以及比较函数所在</p>
+<p><img src="https://derect.oss-cn-hangzhou.aliyuncs.com/C:%5CUsers%5C32427%5CPictures%5Cimg_bed20250802164830705.png"></p>
+<p>比较函数写得很清晰了，就是单纯的逐字比对，这边采用idapy练习一下脚本能力</p>
+<p>EXP：</p>
+<p>import idaapi</p>
+<p>import idautils</p>
+<p>import idc</p>
+<p>import ida_dbg</p>
+<p>import ida_funcs</p>
+<p>start&#x3D;0x00001155</p>
+<p>end&#x3D;0x00001479</p>
+<p>dic&#x3D;{}</p>
+<p>for ea in range(start,end):</p>
+<p>  point&#x3D;idc.get_wide_dword(ea)</p>
+<p>  if point&#x3D;&#x3D;0xC08348F8:</p>
+<p>​    i&#x3D;ea+4</p>
+<p>​    index&#x3D;idc.get_wide_byte(i)</p>
+<p>  if point&#x3D;&#x3D;0x3C00B60F:</p>
+<p>​    i&#x3D;ea+4</p>
+<p>​    value&#x3D;idc.get_wide_byte(i)</p>
+<p>​    dic[index]&#x3D;value</p>
+<p>print(dic)</p>
+<p>得到如图输出</p>
+<p>​    <img src="https://derect.oss-cn-hangzhou.aliyuncs.com/C:%5CUsers%5C32427%5CPictures%5Cimg_bed20250802165159014.png"></p>
+<p>EXP：</p>
+<p>dic&#x3D;{1: 99, 25: 64, 27: 101,0:119, 4: 50, 17: 114, 29: 102, 24: 95, 2: 116, 9: 99, 32: 125, 19: 118, 5: 48, 14: 110, 15: 100, 8: 123, 18: 51, 28: 95, 21: 119, 6: 50, 22: 115, 31: 110, 12: 95, 7: 48, 16: 95, 11: 112, 23: 101, 30: 117, 10: 112, 13: 64, 3: 102, 26: 114, 20: 101}</p>
+<p>for i in range(0,33):</p>
+<p>  print(chr(dic[i]),end&#x3D;’’)   </p>
+<p>另一点是’r‘被’w’给覆盖了，原因和上面有关，（因为这点得修改脚本了），因为0索引没被确认，但确认了0索引的值，就会覆盖掉前一个索引指向的值（因为赋值语句放在了检索值处）</p>
+<p>EXP：</p>
+<p>import idaapi</p>
+<p>import idautils</p>
+<p>import idc</p>
+<p>import ida_dbg</p>
+<p>import ida_funcs</p>
+<p>start&#x3D;0x00001155</p>
+<p>end&#x3D;0x00001479</p>
+<p>dic&#x3D;{}</p>
+<p>for ea in range(start,end):</p>
+<p>  point&#x3D;idc.get_wide_dword(ea)</p>
+<p>  if point&#x3D;&#x3D;0xC08348F8:</p>
+<p>​    i&#x3D;ea+4</p>
+<p>​    index&#x3D;idc.get_wide_byte(i)</p>
+<p>  if point&#x3D;&#x3D;0x3C00B60F:</p>
+<p>​    i&#x3D;ea+4</p>
+<p>​    value&#x3D;idc.get_wide_byte(i)</p>
+<p>​    if index!&#x3D;None:</p>
+<p>​      dic[index]&#x3D;value</p>
+<p>​    else:</p>
+<p>​      dic[0]&#x3D;value   </p>
+<p>​    index&#x3D; None</p>
+<p>​    value&#x3D; None</p>
+<p>print(dic)</p>
+<p>​    再将得到的dict带入之前那个简单py即可</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DeRect</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/undefined/60642.html">http://example.com/undefined/60642.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/idapy/">idapy</a></div><div class="post-share"><div class="social-share" data-image="/img/DeRect.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/undefined/29520.html" title="ESM模块简单介绍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">ESM模块简单介绍</div></div><div class="info-2"><div class="info-item-1">ES 模块 (ECMAScript Modules)，简称 ESM，是 JavaScript 官方的模块系统标准。它为 JavaScript 提供了导入 (import) 和导出 (export) 功能，让你能够将代码拆分成独立的文件（模块），然后在需要时将它们组合起来。  ES 模块的特点 静态结构: ESM 的导入和导出是在代码执行前解析的。这意味着打包工具（如 Webpack）可以在不运行代码的情况下，分析模块依赖关系，从而进行 Tree Shaking（移除未使用的代码）。 异步加载: 在浏览器中，ESM 是异步加载的，不会阻塞 HTML 的解析。 严格模式 (Strict Mode): ES 模块默认在严格模式下运行，这意味着你不能使用一些不安全的语法，比如使用未声明的变量。 导入导出语法: 使用 import 和 export 关键字。   ES 模块的语法示例导出 (export)你可以导出变量、函数、类等。 JavaScript 1234567891011// 方式一：命名导出 (Named Exports)// utils.jsexport const...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/DeRect.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DeRect</div><div class="author-info-description">This is a simple begin</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DeRect303"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Welcome!!!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/60642.html" title="IDApy提取数据">IDApy提取数据</a><time datetime="2025-08-02T08:41:00.000Z" title="Created 2025-08-02 16:41:00">2025-08-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/29520.html" title="ESM模块简单介绍">ESM模块简单介绍</a><time datetime="2025-08-01T11:10:38.245Z" title="Created 2025-08-01 19:10:38">2025-08-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/29520.html" title="V8引擎概述">V8引擎概述</a><time datetime="2025-08-01T11:08:09.883Z" title="Created 2025-08-01 19:08:09">2025-08-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/29520.html" title="沙箱与容器">沙箱与容器</a><time datetime="2025-08-01T10:31:19.184Z" title="Created 2025-08-01 18:31:19">2025-08-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/29520.html" title="宿主程序概念简述">宿主程序概念简述</a><time datetime="2025-08-01T10:31:13.889Z" title="Created 2025-08-01 18:31:13">2025-08-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By DeRect</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
